@@ -14,7 +14,6 @@ var SVLib = {};
 
 /**
  * Loads different sized images based on screen width
- * 		- Use the window object to control resize events
  * 
  * Leave <img>'s src attribute as ""
  * 
@@ -25,25 +24,9 @@ var SVLib = {};
  *  	big  : 1501 - 2000 px
  *  	huge : 2001> px
  * 
- * The smallest defined image will default to all smaller sizes and the largest will be default for larger sizes
- *  	Ex: var img = {"avg":"http://example.com/pictures/average.jpeg" , "big":"/pictures/big.jpeg"}
- *  	400 px screen would load avg
- *  	3000px screen would load big
- * 
- * WARNING: YOU CANNOT SKIP SIZES
- *  	Ex: var img = {"avg":"http://example.com/pictures/average.jpeg" , "huge":"/pictures/huge.jpeg"}
- * 
- * Usage example:
- *  	var img = {"small":"http://example.com/pictures/small.jpeg" , "mid":"/pictures/medium.jpeg"};
- *  	window.onload = function(){
- * 	 		document.getElementById('example').src = SVLib.scaleImg(img);
- * 			document.getElementById('example').setAttribute('style' , 'background-image:'.SVLib.scaleImg(img));
- *  	}
- * 
  * @param {object} img - An object that holds the links to the different image sizes
  * 
- * Future features:
- *  	- Allow gaps in sizing
+ * see http://github.com/ServerVoodoo/SVLib/wiki for usage notes and examples
  */
 SVLib.scaleImg = function(img){
 	var width = window.innerWidth;
@@ -96,14 +79,9 @@ SVLib.scaleImg = function(img){
  * 
  * See SVLib.scaleImg for image params
  * 
- * Parameter example:
- *  	var img = {"id":"myPicture" , "small":"http://example.com/pictures/small.jpeg" , "mid":"/pictures/medium.jpeg"};
- * 		var img = {"class":"myPictures" , "small":"http://example.com/pictures/small.jpeg" , "mid":"/pictures/medium.jpeg"};
- * 
- * NOTE: Scaling by class will apply to all elements of that class
- * 
  * @param {object} img
  *
+ * see http://github.com/ServerVoodoo/SVLib/wiki for usage notes and examples
  */
 SVLib.scaleBySelector = function(img){
 	if(img.id){
@@ -115,5 +93,4 @@ SVLib.scaleBySelector = function(img){
 			pictures[zxc].src = SVLib.scaleImg(img);
 		}
 	}
-	
 };
