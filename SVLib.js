@@ -84,13 +84,16 @@ SVLib.scaleImg = function(img){
  * see http://github.com/ServerVoodoo/SVLib/wiki for usage notes and examples
  */
 SVLib.scaleBySelector = function(img){
-	if(img.id){
-		document.getElementById(img.id).src = SVLib.scaleImg(img);
+	var imageLink = SVLib.scaleImg(img);
+	if(img.id && document.getElementById(img.id).src != imageLink){
+		document.getElementById(img.id).src = imageLink;
 	}
 	if(img.class){
 		var pictures = document.getElementsByClassName(img.class);
-		for(var zxc = 0; zxc < pictures.length; zxc++){
-			pictures[zxc].src = SVLib.scaleImg(img);
+		if(pictures[0].src != imageLink){
+			for(var zxc = 0; zxc < pictures.length; zxc++){
+				pictures[zxc].src = SVLib.scaleImg(img);
+			}
 		}
 	}
 };
